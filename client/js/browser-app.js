@@ -76,7 +76,8 @@ fileFormDOM.addEventListener('submit', async (e) => {
         },
       })
       imageValue = src
-      //? console.log('Image uploaded successfully:', src) 
+      alert('Image uploaded successfully')
+      //? console.log('Image uploaded successfully:', src)
     } catch (error) {
       imageValue = null
       console.error('Error uploading image:', error)
@@ -84,7 +85,6 @@ fileFormDOM.addEventListener('submit', async (e) => {
   }
 
   try {
-
     const product = { image: imageValue }
     await axios.post(url, product)
     fetchProducts()
@@ -93,9 +93,7 @@ fileFormDOM.addEventListener('submit', async (e) => {
     imagePreview.style.display = 'none'
     imagePreview.src = ''
     imageValue = null
-    console.log('Form reset successfully') /
-
-    await fetchImages()
+    console.log('Form reset successfully') / (await fetchImages())
   } catch (error) {
     console.error('Error submitting form:', error)
   }

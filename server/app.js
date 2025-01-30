@@ -59,7 +59,6 @@ const startServer = () => {
 connectDB.connect((err) => {
   if (err) {
     console.error('MySQL connection error: ', err)
-    // Log the error but still start the server
     startServer()
   } else {
     console.log('MySQL connected...')
