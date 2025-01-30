@@ -2,7 +2,7 @@
 
 ## Overview
 
-Click Fit is a simple sport and fitness website built using HTML, CSS, JavaScript, Bootstrap, and jQuery. It includes animations, AJAX calls, and a drag-and-drop image upload feature. The backend is built using Node.js and Express, with a MySQL database for user management.
+Click Fit is a simple sport and fitness website built using HTML, CSS, JavaScript, Bootstrap, and jQuery. It includes animations, AJAX calls, and a drag-and-drop image upload feature. The backend is built using Node.js and Express, with a MySQL database for adding user.
 
 ## Features
 
@@ -14,7 +14,7 @@ Click Fit is a simple sport and fitness website built using HTML, CSS, JavaScrip
 
 ## Project Structure
 
-```
+```plaintext
 click-fit/
 │── client/           # Frontend (HTML, CSS, JS, Bootstrap, jQuery)
 │── scripts/          # SQL script for table & stored procedure
@@ -47,7 +47,22 @@ npm install
 
 - Create a MySQL database.
 - Run the SQL scripts inside the `scripts/` folder to create tables and stored procedures.
-- Here's the SQL script mentioned in the test:
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the root directory and add the following variables:
+
+```env
+PORT=5000
+DB_HOST='your database host'
+DB_USER='your username (root)'
+DB_PASSWORD='your password'
+DB_NAME='your database name'
+```
+
+### 5. Run the SQL Script
+
+Here's the SQL script mentioned in the test:
 
 ```sql
 -- Create database if it doesn't exist
@@ -84,45 +99,47 @@ DELIMITER ;
 CALL addUser('test@example.com', 'password123', 'admin');
 ```
 
-### 4. Add User function
-- Go to server/controllers/userController.js
+### 6. Add User Function
+
+Go to `server/controllers/userController.js` and add the following function:
 
 ```javascript
-
 const addUser = (email, password, type, req, res) => {
-  const query = 'CALL addUser(?, ?, ?)'
+  const query = 'CALL addUser(?, ?, ?)';
   connectDB.query(query, [email, password, type], (err, results) => {
     if (err) {
-      console.log('Error inserting user:', err)
-      throw new CustomError.BadRequestError('Error inserting user')
+      console.log('Error inserting user:', err);
+      throw new CustomError.BadRequestError('Error inserting user');
     } else {
-      console.log('User added successfully:', results)
+      console.log('User added successfully:', results);
     }
-  })
-}
+  });
+};
 
-module.exports = { addUser }
+module.exports = { addUser };
 ```
 
-### 5. Run the Backend Server
+### 7. Run the Backend Server
 
 ```sh
 npm start
+# Or
+npm run dev # for development mode
 ```
 
 The backend will run on `http://localhost:5000`.
 
-### 6 Open the Website
+### 8. Open the Website
 
 - Open `http://localhost:5000` in a browser.
-- The AJAX request will fetch the number fact and display it in first section with orange color.
+- The AJAX request will fetch the number fact and display it in the first section with orange color.
 - Try uploading an image using drag-and-drop or file selection in the second section.
 
 ## API Endpoints
 
-- ``: Uploads an image to the `upload_images/` folder.
+- `/api/v1/uploadImage/uploads`: Uploads an image to the `upload_images/` folder.
 
-## 7 Notes
+## Notes
 
-- The Uploaded images are fetched under section 2 where the drag and drop , just make sure to refresh the page.
-- Clicking on some links are working well and some will result in an error, as only the main page is functional.
+- The uploaded images are fetched under section 2 where the drag-and-drop area is located. Just make sure to refresh the page.
+- Clicking on some links will result in an error, as only the main page is functional.
