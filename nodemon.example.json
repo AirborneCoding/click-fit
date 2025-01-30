@@ -1,0 +1,11 @@
+{
+  "env": {
+    "DB_HOST": "localhost",
+    "DB_USER": "root",
+    "DB_PASSWORD": "your_password",
+    "DB_NAME": "your_database"
+  },
+  "watch": ["server"],
+  "ext": "js,json",
+  "exec": "node ./server/app.js"
+}
