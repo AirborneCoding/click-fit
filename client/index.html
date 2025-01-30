@@ -159,8 +159,8 @@
                 <div id="drop-area">
                     <p>Drag & Drop your image here</p>
                     <svg class="sddd" version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"
-                        data-darkreader-inline-fill="" style="--darkreader-inline-fill: #000000;">
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve"
+                        fill="#000000" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #000000;">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                         <g id="SVGRepo_iconCarrier">
@@ -168,46 +168,46 @@
                                 .pictogram_een {
                                     fill: #F4D6B0;
                                 }
-                    
+
                                 .pictogram_drie {
                                     fill: #F27261;
                                 }
-                    
+
                                 .pictogram_vijf {
                                     fill: #01A59C;
                                 }
-                    
+
                                 .pictogram_zes {
                                     fill: #0C6667;
                                 }
-                    
+
                                 .st0 {
                                     fill: #F8AD89;
                                 }
-                    
+
                                 .st1 {
                                     fill: #E54D2E;
                                 }
-                    
+
                                 .st2 {
                                     fill: none;
                                 }
-                    
+
                                 .st3 {
                                     clip-path: url(#SVGID_2_);
                                     fill: #01A59C;
                                 }
-                    
+
                                 .st4 {
                                     clip-path: url(#SVGID_2_);
                                     fill: none;
                                 }
-                    
+
                                 .st5 {
                                     clip-path: url(#SVGID_2_);
                                     fill: #0C6667;
                                 }
-                    
+
                                 .st6 {
                                     fill: #0C6667;
                                 }
@@ -1115,10 +1115,12 @@
             <div class="col-lg-4">
                 <div class="py-lg-4 text-center credit">
                     <p class="text-light mb-0">Designed by <a class="text-light fw-bold" href="#">ClickFit</a></p>
+                    <p id="number-fact2"></p>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Footer End -->
 
 
@@ -1139,13 +1141,24 @@
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="./js/browser-app.js"></script>
+    <script src="js/browser-app.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
     <!-- Additional Custom Scripts -->
 
+    <script>
+        $.ajax({
+            url: 'http://numbersapi.com/1/30/date?json',
+            type: 'GET',
+            success: function (data) {
+                $('p#number-fact2').each(function () {
+                    $(this).text(data.text)
+                })
+            },
+        })
+    </script>
 
 
 </body>
