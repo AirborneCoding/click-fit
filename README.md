@@ -32,7 +32,7 @@ click-fit/
 ### 1. Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/click-fit.git
+git clone https://github.com/AirborneCoding/click-fit.git
 cd click-fit
 ```
 
